@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -43,25 +44,29 @@ namespace WpfAppAsynchronous
       var total = 0;
       foreach (var url in urlList)
       {
-        // GetURLContents returns the contents of url as a byte array.
-        byte[] urlContents = await GetURLContents(url);
+        // Alternative Approach: byte[] urlContents = await GetURLContents(url);
+        HttpClient client = new HttpClient { MaxResponseContentBufferSize = 1000000 };
+        byte[] urlContents = await client.GetByteArrayAsync(url); 
+        //Task<byte[]> contentsTask = client.GetByteArrayAsync(url);
+        //byte[] urlContents = await contentsTask;
+
+
         DisplayResults(url, urlContents);
-        // Update the total.
         total += urlContents.Length;
       }
       // Display the total count for all of the web addresses.
       resultsTextBox.Text += $"\r\n\r\nTotal bytes returned: {total}\r\n";
-    }    
-
-    private async Task<byte[]> GetURLContents(string url)
-    {
-      var contents = new MemoryStream();
-      var webRequest = (HttpWebRequest)WebRequest.Create(url);
-      using (WebResponse response = await webRequest.GetResponseAsync())
-      using (Stream responseStream = response.GetResponseStream())
-        await responseStream.CopyToAsync(contents);
-      return contents.ToArray();
     }
+
+    //private async Task<byte[]> GetURLContents(string url)
+    //{
+    //  var contents = new MemoryStream();
+    //  var webRequest = (HttpWebRequest)WebRequest.Create(url);
+    //  using (WebResponse response = await webRequest.GetResponseAsync())
+    //  using (Stream responseStream = response.GetResponseStream())
+    //    await responseStream.CopyToAsync(contents);
+    //  return contents.ToArray();
+    //}
 
     private List<string> SetUpURLList()
     {
