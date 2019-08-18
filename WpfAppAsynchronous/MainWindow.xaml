@@ -1,0 +1,14 @@
+﻿<Window x:Class="WpfAppAsynchronous.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppAsynchronous"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="resultsTextBox" HorizontalAlignment="Left" Height="250" Margin="178,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500"/>
+        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Margin="314,354,0,0" VerticalAlignment="Top" Width="75" Click="StartButton_Click"/>
+
+    </Grid>
+</Window>
