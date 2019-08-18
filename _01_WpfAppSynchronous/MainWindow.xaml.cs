@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using System.Windows;
 
-namespace WpfAppSynchronous
+namespace _01_WpfAppSynchronous
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml

@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace _03_WpfAppAsynchronousMyEdit
+namespace _04_WpfAppAsynchronousImproved
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml
@@ -16,7 +16,6 @@ namespace _03_WpfAppAsynchronousMyEdit
     {
       InitializeComponent();
     }
-
     private async void StartButton_Click(object sender, RoutedEventArgs e)
     {
       startButton.IsEnabled = false;
@@ -31,26 +30,33 @@ namespace _03_WpfAppAsynchronousMyEdit
       var total = 0;
       var watch = new Stopwatch();
       var urlList = SetUpURLList();
-      var urlTasks = new List<Task<byte[]>>();
-
-      foreach (var url in urlList)
-      {
-        var client = new HttpClient { MaxResponseContentBufferSize = 1000000 };        
-        urlTasks.Add(client.GetByteArrayAsync(url));
-      }
 
       watch.Start();
-      var taskFinished = await Task.WhenAll(urlTasks);
-      for (int i = 0; i < urlList.Count; i++)
-      {
-        DisplayResults(urlList[i], taskFinished[i]);
-        total += taskFinished[i].Length;
-      }
+      // Defer behavior of LINQ
+      IEnumerable<Task<int>> downloadTaskQuery = urlList.Select(x => ProcessUrlAsync(x));
+
+      // Convert to Array for execution
+      Task<int>[] downloadTasks = downloadTaskQuery.ToArray();
+
+      // Call WhenAll for all the task
+      int[] lengths = await Task.WhenAll(downloadTasks);
+      watch.Stop();
+      total = lengths.Sum();
+
       watch.Stop();
       lblTime.Content = watch.ElapsedMilliseconds.ToString() + "Milliseconds";
       resultsTextBox.Text += $"\r\n\r\nTotal bytes returned: {total}\r\n";
     }
-    
+
+    private async Task<int> ProcessUrlAsync(string url)
+    {
+      var client = new HttpClient { MaxResponseContentBufferSize = 1000000 };
+      var urlContents = await client.GetByteArrayAsync(url);
+
+      DisplayResults(url, urlContents);
+      return urlContents.Length;
+    }
+
     private List<string> SetUpURLList()
     {
       var urls = new List<string>

@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WpfAppAsynchronous
+namespace _02_WpfAppAsynchronous
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml

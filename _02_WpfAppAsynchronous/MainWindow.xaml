@@ -1,9 +1,9 @@
-﻿<Window x:Class="WpfAppAsynchronous.MainWindow"
+﻿<Window x:Class="_02_WpfAppAsynchronous.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfAppAsynchronous"
+        xmlns:local="clr-namespace:_02_WpfAppAsynchronous"
         mc:Ignorable="d"
         Title="WpfAppAsynchronous" Height="450" Width="660.417">
     <Grid>
