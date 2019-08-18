@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppSynchronous", "WpfAppSynchronous\WpfAppSynchronous.csproj", "{DA13F636-87E6-45AC-BE62-49BAB939A094}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_01_WpfAppSynchronous", "_01_WpfAppSynchronous\_01_WpfAppSynchronous.csproj", "{DA13F636-87E6-45AC-BE62-49BAB939A094}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppAsynchronous", "WpfAppAsynchronous\WpfAppAsynchronous.csproj", "{AF46B3E7-7100-49EF-B05C-9DDAE055C7E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_02_WpfAppAsynchronous", "_02_WpfAppAsynchronous\_02_WpfAppAsynchronous.csproj", "{AF46B3E7-7100-49EF-B05C-9DDAE055C7E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppAsynchronousImproved", "WpfAppAsynchronousImproved\WpfAppAsynchronousImproved.csproj", "{4725FC6F-F5D3-4DC8-92FC-833E7695B56C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_03_WpfAppAsynchronousMyEdit", "_03_WpfAppAsynchronousMyEdit\_03_WpfAppAsynchronousMyEdit.csproj", "{4725FC6F-F5D3-4DC8-92FC-833E7695B56C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
