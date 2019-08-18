@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows;
@@ -14,28 +15,26 @@ namespace WpfAppSynchronous
     {
       InitializeComponent();
     }
-
     private void StartButton_Click(object sender, RoutedEventArgs e)
     {
       resultsTextBox.Clear();
       SumPageSizes();
       resultsTextBox.Text += "\r\nControl returned to startButton_Click.";
     }
-
     private void SumPageSizes()
     {
-      // Make a list of web addresses.
+      var watch = new Stopwatch();
       List<string> urlList = SetUpURLList();
       var total = 0;
+      watch.Start();
       foreach (var url in urlList)
       {
-        // GetURLContents returns the contents of url as a byte array.
         byte[] urlContents = GetURLContents(url);
         DisplayResults(url, urlContents);
-        // Update the total.
         total += urlContents.Length;
       }
-      // Display the total count for all of the web addresses.
+      watch.Stop();
+      lblTime.Content = watch.ElapsedMilliseconds.ToString() + "Milliseconds";
       resultsTextBox.Text += $"\r\n\r\nTotal bytes returned: {total}\r\n";
     }
     private List<string> SetUpURLList()
@@ -55,7 +54,6 @@ namespace WpfAppSynchronous
         };
       return urls;
     }
-
     private byte[] GetURLContents(string url)
     {
       var contents = new MemoryStream();

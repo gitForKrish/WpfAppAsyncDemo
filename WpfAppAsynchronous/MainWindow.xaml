@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppAsynchronous"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="WpfAppAsynchronous" Height="450" Width="660.417">
     <Grid>
-        <TextBox x:Name="resultsTextBox" HorizontalAlignment="Left" Height="250" Margin="178,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500"/>
-        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Margin="314,354,0,0" VerticalAlignment="Top" Width="75" Click="StartButton_Click"/>
+        <TextBox x:Name="resultsTextBox" HorizontalAlignment="Left" Height="250" Margin="65,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500"/>
+        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Margin="145,364,0,0" VerticalAlignment="Top" Width="75" Click="StartButton_Click"/>
+        <Label Content="Time taken:" HorizontalAlignment="Left" Margin="65,306,0,0" VerticalAlignment="Top" Width="88"/>
+        <Label Name="lblTime" Content="" HorizontalAlignment="Left" Margin="177,306,0,0" VerticalAlignment="Top" Width="236"/>
 
     </Grid>
 </Window>

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WpfAppAsynchronous
+namespace WpfAppAsynchronousImproved
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml
@@ -27,38 +28,29 @@ namespace WpfAppAsynchronous
 
     private async Task SumPageSizesAsync()
     {
-      var watch = new Stopwatch();
-      List<string> urlList = SetUpURLList();
       var total = 0;
-      watch.Start();
+      var watch = new Stopwatch();
+      var urlList = SetUpURLList();
+      var urlTasks = new List<Task<byte[]>>();
+
       foreach (var url in urlList)
       {
-        // Alternative Approach: byte[] urlContents = await GetURLContents(url);
-        HttpClient client = new HttpClient { MaxResponseContentBufferSize = 1000000 };
-        byte[] urlContents = await client.GetByteArrayAsync(url); 
-        //Task<byte[]> contentsTask = client.GetByteArrayAsync(url);
-        //byte[] urlContents = await contentsTask;
+        var client = new HttpClient { MaxResponseContentBufferSize = 1000000 };        
+        urlTasks.Add(client.GetByteArrayAsync(url));
+      }
 
-        DisplayResults(url, urlContents);
-        total += urlContents.Length;
+      watch.Start();
+      var taskFinished = await Task.WhenAll(urlTasks);
+      for (int i = 0; i < urlList.Count; i++)
+      {
+        DisplayResults(urlList[i], taskFinished[i]);
+        total += taskFinished[i].Length;
       }
       watch.Stop();
-
       lblTime.Content = watch.ElapsedMilliseconds.ToString() + "Milliseconds";
-      // Display the total count for all of the web addresses.
       resultsTextBox.Text += $"\r\n\r\nTotal bytes returned: {total}\r\n";
     }
-
-    //private async Task<byte[]> GetURLContents(string url)
-    //{
-    //  var contents = new MemoryStream();
-    //  var webRequest = (HttpWebRequest)WebRequest.Create(url);
-    //  using (WebResponse response = await webRequest.GetResponseAsync())
-    //  using (Stream responseStream = response.GetResponseStream())
-    //    await responseStream.CopyToAsync(contents);
-    //  return contents.ToArray();
-    //}
-
+    
     private List<string> SetUpURLList()
     {
       var urls = new List<string>
