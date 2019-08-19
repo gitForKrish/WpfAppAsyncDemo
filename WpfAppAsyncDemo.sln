@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_03_WpfAppAsynchronousMyEdi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_04_WpfAppAsynchronousImproved", "_04_WpfAppAsynchronousImproved\_04_WpfAppAsynchronousImproved.csproj", "{C0EE46C7-BDEE-45B8-A0AA-AD9653CF99A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_05_AsyncReturnTypes", "_05_AsyncReturnTypes\_05_AsyncReturnTypes.csproj", "{B881B0BF-8923-47ED-B81C-9198851321CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C0EE46C7-BDEE-45B8-A0AA-AD9653CF99A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0EE46C7-BDEE-45B8-A0AA-AD9653CF99A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0EE46C7-BDEE-45B8-A0AA-AD9653CF99A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B881B0BF-8923-47ED-B81C-9198851321CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B881B0BF-8923-47ED-B81C-9198851321CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B881B0BF-8923-47ED-B81C-9198851321CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B881B0BF-8923-47ED-B81C-9198851321CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
